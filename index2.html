@@ -6,7 +6,7 @@
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
      </head>
-     <body onload="Setup()">
+     <body>
          <h4 id="P1"></h4><span id="P1-score"></span>
          <br>
          <h4 id="P2"></h4><span id="P2-score"></span>
@@ -35,7 +35,7 @@
      <style> 
       body{
           background-color:rgb(19, 86, 173);
-          color: rgb(202, 13, 101);
+          color: rgb(0, 0, 0);
           font-size: 20px;
       }
      #output{
@@ -46,16 +46,19 @@
      float: none;
      text-align: left;
      }
+     #correction{
+         width: 30%;
+     }
     
     </style>
     <script>
-        function Setup()
-        {
+        
+        
             var player1 = localStorage.getItem("Player 1");
             var player2 = localStorage.getItem("Player 2");
 
             var player1_ = 0;
-            var player2_ = 0
+            var player2_ = 0;
 
             document.getElementById("P1").innerHTML = player1 + ":";
             document.getElementById("P2").innerHTML = player2 + ":";
@@ -65,7 +68,7 @@
 
             document.getElementById("Question_turn").innerHTML = player1;
             document.getElementById("Answer_turn").innerHTML = player2;
-        }
+        
         function Signal()
         {
             var a = document.getElementById("N1").value;
@@ -73,7 +76,7 @@
 
            var aa = parseInt(a) * parseInt(b)
            console.log(aa);
-           localStorage.setItem("Answer", aa);
+           localStorage.setItem("A", aa);
 
            var QN = "<h4>" + a + "x" + b + "=" + "</h4>";
            var Answer = "<br>Answer: <input id='Check' type='number' placeholder=' Please type your answer here'> " ;
@@ -81,9 +84,49 @@
            var row = QN + Answer + check;
            document.getElementById("output").innerHTML = row
 
-           document.getElementById("N1").value = " ";
-           document.getElementById("N2").value = " ";
+           document.getElementById("N1").value = "";
+           document.getElementById("N2").value = "";
         }
+        var Q = player1;
+        var A = player2;
+        
+       function check()
+       {
+           var b = localStorage.getItem("A");
+           var a = document.getElementById("Check").value;
+           if( a == b )
+           {
+               window.alert("Correct");
+            if( A == "player1")
+		   {
+			player1_ = player1_ +1;
+		    document.getElementById("P1-score").innerHTML = player1_;
+		   }
+		   else 
+		    {
+			player2_ = player2_ +1;
+		    document.getElementById("P2-score").innerHTML = player2_;
+		    }
+           }
+           if( Q == player1)
+           {
+               Q = player2;
+               document.getElementById("Question_turn").innerHTML = player2;
+           }else{
+              Q = player1;
+               document.getElementById("Question_turn").innerHTML = player1; 
+           }
+           if( A == player2 )
+           {
+              A = player1;
+               document.getElementById("Answer_turn").innerHTML = player1;
+           }else{
+               A = player2;
+               document.getElementById("Answer_turn").innerHTML = player2;
+           }
+           document.getElementById("output").innerHTML = " "
+       }
+
 
     </script>
 
