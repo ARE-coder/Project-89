@@ -77,4 +77,17 @@ text-align: left;
 
     
     </style>
+    <script> 
+    function Adduser()
+    {
+       var a = document.getElementById("login1").value;
+       var b = document.getElementById("login2").value;
+       localStorage.setItem("Player 1", a );
+       localStorage.setItem("Player 2", b);
+       console.log(a);
+       console.log(b);
+       window.location = "index2.html";
+    }
+    
+    </script>
 </html>
