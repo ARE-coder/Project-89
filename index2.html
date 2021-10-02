@@ -1,0 +1,72 @@
+<html> 
+     <head> 
+         <title> Math Game </title>
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+     </head>
+     <body onload="Setup()">
+         <h4 id="P1"></h4><span id="P1-score"></span>
+         <br>
+         <h4 id="P2"></h4><span id="P2-score"></span>
+         <div>
+             <center>
+                 <h3>Question Turn - </h3><span id="Question_turn"></span>
+                 <br>
+                 <h3> Answer Turn - </h3><span id="Answer_turn"></span>
+                 <br>
+                 <div id="output" class="col-lg-6"> </div>
+                 <br>
+                 <br>
+                 <h4> Number 1 </h4>
+                 <br>
+                 <input id="N1" type="number" placeholder="Type the first number in here." class="form-control"> 
+                 <br>
+                 <br>
+                 <h4> Number 2 </h4>
+                 <br>
+                 <input id="N2" type="number" placeholder="Type your second number in here" class="form-control">
+                 <br>
+                 <button id="Send" onclick="Signal()" class="btn btn-success"> Send </button>
+              </center>
+         </div>
+     </body>
+     <style> 
+      body{
+          background-color:rgb(19, 86, 173);
+          color: rgb(202, 13, 101);
+          font-size: 20px;
+      }
+     #output{
+     background-color: white;
+     border-top:rgb(62, 59, 216);
+     border-radius: 10px;
+     padding:10px;
+     float: none;
+     text-align: left;
+     }
+    
+    </style>
+    <script>
+        function Setup()
+        {
+            var player1 = localStorage.getItem("Player 1");
+            var player2 = localStorage.getItem("Player 2");
+
+            var player1_ = 0;
+            var player2_ = 0
+
+            document.getElementById("P1").innerHTML = player1 + ":";
+            document.getElementById("P2").innerHTML = player2 + ":";
+
+            document.getElementById("P1-score").innerHTML = player1_;
+            document.getElementById("P2-score").innerHTML = player2_;
+
+            document.getElementById("Question_turn").innerHTML = player1;
+            document.getElementById("Answer_turn").innerHTML = player2;
+        }
+
+    </script>
+
+</html>
