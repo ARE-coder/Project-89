@@ -66,6 +66,24 @@
             document.getElementById("Question_turn").innerHTML = player1;
             document.getElementById("Answer_turn").innerHTML = player2;
         }
+        function Signal()
+        {
+            var a = document.getElementById("N1").value;
+            var b = document.getElementById("N2").value;
+
+           var aa = parseInt(a) * parseInt(b)
+           console.log(aa);
+           localStorage.setItem("Answer", aa);
+
+           var QN = "<h4>" + a + "x" + b + "=" + "</h4>";
+           var Answer = "<br>Answer: <input id='Check' type='number' placeholder=' Please type your answer here'> " ;
+           var check = "<br><br> <button id='correction' onclick='check()' class='btn btn-info'> Check </button";
+           var row = QN + Answer + check;
+           document.getElementById("output").innerHTML = row
+
+           document.getElementById("N1").value = " ";
+           document.getElementById("N2").value = " ";
+        }
 
     </script>
 
